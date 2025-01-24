@@ -20,7 +20,6 @@ class InventoriesController < ApplicationController
 
     if @product.update(product_params)
       redirect_to root_path, notice: "#{@product.name} updated successfully!"
-      # redirect_to inventory_path, notice: "#{@product.name} updated successfully!"
     else
       render :edit
     end

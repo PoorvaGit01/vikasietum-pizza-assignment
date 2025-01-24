@@ -6,6 +6,8 @@
 <% if current_user.vendor?%>
   <%= link_to 'Inventory', inventories_index_path, class: 'btn btn-info' %>
 <% end %>
+  <%= link_to 'All Orders', orders_path, class: 'btn btn-info' %>
+  <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2 g-3">
     <% @veg_pizza.each do |pizza| %>
