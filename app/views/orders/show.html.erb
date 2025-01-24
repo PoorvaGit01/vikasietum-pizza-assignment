@@ -1,0 +1,35 @@
+<h2>Order Details</h2>
+
+<div class="card">
+  <div class="card-body">
+    <p><strong>Order ID:</strong> <%= @order.id %></p>
+    <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+    <p><strong>Pizza:</strong> <%= @order.pizza.name if @order.pizza.present? %></p>
+    <p><strong>Crust:</strong> <%= @order.crust.name if @order.crust.present? %></p>
+    <p><strong>Size:</strong> <%= @order.size.capitalize %></p>
+    <p><strong>Quantity:</strong> <%= @order.quantity %></p>
+    <p><strong>Total Price:</strong> Rs <%= @order.price %></p>
+  </div>
+</div>
+
+<h3>Items Ordered:</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Item Type</th>
+      <th>Item Name</th>
+      <th>Price (Rs)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.orderable_type %></td>
+        <td><%= item.orderable.name if item.orderable.present? %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back to Orders", orders_path, class: "btn btn-secondary" %>

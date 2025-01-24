@@ -1,0 +1,107 @@
+<header class="text-center py-3 mb-3">
+  <h1 class="display-5 fw-bold">Welcome to Our Pizzeria</h1>
+  <p class="lead mb-0">Get ready for a delicious experience!</p>
+</header>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+    <% @veg_pizza.each do |pizza| %>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="<%= image_path('pizza.jpeg') %>" class="card-img-top" alt="Pizza Image" style="height: 150px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title"><%= pizza.name %> (Veg)</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Regular: <%= number_to_currency(pizza.regular_price) %></li>
+              <li class="list-group-item">Medium: <%= number_to_currency(pizza.medium_price) %></li>
+              <li class="list-group-item">Large: <%= number_to_currency(pizza.large_price) %></li>
+            </ul>
+            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col text-center">
+      <h2>Non-Vegetarian Pizzas</h2>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+    <% @non_veg_pizza.each do |pizza| %>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="<%= image_path('pizza.jpeg') %>" class="card-img-top" alt="Pizza Image" style="height: 150px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title"><%= pizza.name %> (Non-Veg)</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Regular: <%= number_to_currency(pizza.regular_price) %></li>
+              <li class="list-group-item">Medium: <%= number_to_currency(pizza.medium_price) %></li>
+              <li class="list-group-item">Large: <%= number_to_currency(pizza.large_price) %></li>
+            </ul>
+            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row mt-5">
+  <div class="col text-center">
+    <h2>Sides</h2>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-3">
+  <% @side_items.each do |side| %>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="<%= image_path('drink.jpeg') %>" class="card-img-top" alt="Side Image" style="height: 150px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title"><%= side.name %></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= number_to_currency(side.price) %></li>
+          </ul> 
+          <a href="<%=  %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+  <div class="row mt-5">
+    <div class="col text-center">
+      <a href="<%=  %>" class="btn btn-success btn-lg">Place General Order</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-img-top {
+    height: 150px;
+  }
+.row-cols-md-2 {
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.container{
+    margin-left: 231px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-right: 310px;
+}
+
+.btn-lg {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    margin-right: 310px;
+}
+</style>
