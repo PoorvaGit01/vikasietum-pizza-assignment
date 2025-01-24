@@ -1,4 +1,5 @@
 class HomesController < ApplicationController
+  before_action :authenticate_user!
   def index
       @veg_category = Category.find_by(name:"Vegetarian")
       @non_veg_category = Category.find_by(name:"Non-Vegetarian") 

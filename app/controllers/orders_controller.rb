@@ -1,4 +1,13 @@
 class OrdersController < ApplicationController
+
+  def index
+    if current_user.vendor?
+      @orders = Order.all
+    else
+      @orders = current_user.orders
+    end
+  end
+
   def new
     @pizza = Pizza.find_by(id:params[:pizza_id])
     @crusts = Crust.all
@@ -9,7 +18,8 @@ class OrdersController < ApplicationController
   end 
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(order_params.merge({user_id: current_user
+    .id}))
     @pizza = Pizza.find(order_params[:pizza_id])
     if @order.save
       side_item = SideItem.find(params[:order][:side_item_ids])

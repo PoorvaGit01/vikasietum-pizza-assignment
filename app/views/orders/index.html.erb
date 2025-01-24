@@ -1,0 +1,28 @@
+<h1>All Orders</h1>
+
+<% if @orders.any? %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.status.capitalize %></td>
+          <td><%= number_to_currency(order.price) %></td>
+          <td>
+            <%= link_to 'View Order', order_path(order), class: 'btn btn-info' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No orders available.</p>
+<% end %>
