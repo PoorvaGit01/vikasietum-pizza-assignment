@@ -26,3 +26,8 @@
 <% else %>
   <p>No orders available.</p>
 <% end %>
+<td>
+<% if current_user.vendor?%>
+  <%= link_to 'Inventory', inventories_index_path, class: 'btn btn-info' %>
+<% end %>
+</td>

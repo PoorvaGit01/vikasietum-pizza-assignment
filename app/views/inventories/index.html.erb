@@ -1,2 +1,81 @@
-<h1>Inventories#index</h1>
-<p>Find me in app/views/inventories/index.html.erb</p>
+<h1>Inventory Management</h1>
+
+<h2>Pizzas</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pizzas.each do |pizza| %>
+      <tr>
+        <td><%= pizza.name %></td>
+        <td><%= pizza.quantity %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(id: pizza.id, product_type: 'pizza') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Crusts</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @crusts.each do |crust| %>
+      <tr>
+        <td><%= crust.name %></td>
+        <td><%= crust.quantity %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(id: crust.id, product_type: 'crust') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Toppings</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @toppings.each do |topping| %>
+      <tr>
+        <td><%= topping.name %></td>
+        <td><%= topping.quantity %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(id: topping.id, product_type: 'topping') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Side Items</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @side_items.each do |side_item| %>
+      <tr>
+        <td><%= side_item.name %></td>
+        <td><%= side_item.quantity %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(id: side_item.id, product_type: 'side_item') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

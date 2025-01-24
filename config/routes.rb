@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   resources :inventories
   namespace :vendor do
     resources :orders, only: [:index]
-    resources :inventories, only: [:index, :create, :update, :destroy]
+    resources :inventory, only: [:index] do
+      member do
+        get 'edit'
+        patch 'update'
+      end
+    end
   end
 
   namespace :customer do

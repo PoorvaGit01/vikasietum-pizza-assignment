@@ -1,0 +1,16 @@
+<h1>Edit <%= @product.name %> Inventory</h1>
+
+<%= form_with model: @product, url: inventory_path(@product), method: :patch do |form| %>
+  <div class="form-group">
+    <%= form.label :quantity, "Quantity" %>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+
+  <%= form.hidden_field :product_type, value: params[:product_type] %>
+
+  <div class="form-group">
+    <%= form.submit "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Inventory', inventory_path, class: "btn btn-secondary" %>

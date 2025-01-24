@@ -3,6 +3,9 @@
   <p class="lead mb-0">Get ready for a delicious experience!</p>
 </header>
 
+<% if current_user.vendor?%>
+  <%= link_to 'Inventory', inventories_index_path, class: 'btn btn-info' %>
+<% end %>
 <div class="container">
   <div class="row row-cols-1 row-cols-md-2 g-3">
     <% @veg_pizza.each do |pizza| %>
@@ -16,7 +19,7 @@
               <li class="list-group-item">Medium: <%= number_to_currency(pizza.medium_price) %></li>
               <li class="list-group-item">Large: <%= number_to_currency(pizza.large_price) %></li>
             </ul>
-            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
+            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Order</a>
           </div>
         </div>
       </div>
@@ -41,42 +44,12 @@
               <li class="list-group-item">Medium: <%= number_to_currency(pizza.medium_price) %></li>
               <li class="list-group-item">Large: <%= number_to_currency(pizza.large_price) %></li>
             </ul>
-            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
+            <a href="<%= new_order_path(pizza_id: pizza.id) %>" class="btn btn-success btn-sm mt-3">Order</a>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-
-  <div class="row mt-5">
-  <div class="col text-center">
-    <h2>Sides</h2>
-  </div>
-</div>
-
-<div class="row row-cols-1 row-cols-md-2 g-3">
-  <% @side_items.each do |side| %>
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="<%= image_path('drink.jpeg') %>" class="card-img-top" alt="Side Image" style="height: 150px; object-fit: cover;">
-        <div class="card-body">
-          <h5 class="card-title"><%= side.name %></h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= number_to_currency(side.price) %></li>
-          </ul> 
-          <a href="<%=  %>" class="btn btn-success btn-sm mt-3">Add To Card</a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-  <div class="row mt-5">
-    <div class="col text-center">
-      <a href="<%=  %>" class="btn btn-success btn-lg">Place General Order</a>
-    </div>
-  </div>
-</div>
 
 <style>
   .card-img-top {
