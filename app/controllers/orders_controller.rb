@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
-
+  before_action :authorize_customer!, only: [:new ]
   def index
     if current_user.vendor?
-      @orders = Order.all
+      @orders = Order.where.not(status:"pending")
     else
-      @orders = current_user.orders
+      @orders = current_user.orders&.where.not(status:"pending")
     end
   end
 
